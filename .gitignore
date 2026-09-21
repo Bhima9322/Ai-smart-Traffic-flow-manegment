@@ -1,0 +1,19 @@
+# Arduino IDE / PlatformIO build outputs
+.pio/
+build/
+*.elf
+*.bin
+*.map
+
+# Local environment files
+.env
+
+# Private ESP32 Wi-Fi/MQTT credentials (copy from local_config.example.h)
+firmware/common/local_config.h
+
+# Local SQLite traffic history
+traffic.db
+
+# Python bytecode
+__pycache__/
+*.py[cod]
