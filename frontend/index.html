@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AI traffic signal control operations dashboard">
+  <title>FlowSync | Traffic Operations</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">↯</span><div><p>FLOWSYNC</p><h1>Intersection control room</h1></div></div>
+      <div class="header-status"><span id="connection-dot" class="status-dot offline"></span><span id="system-status">Backend unavailable</span><span class="divider"></span><span id="mode" class="mode-pill">—</span></div>
+    </header>
+
+    <section class="hero-grid">
+      <article class="camera-panel panel">
+        <div class="panel-heading"><div><p class="eyebrow">LIVE OBSERVATION</p><h2>Camera feed</h2></div><span id="camera-mode" class="subtle-pill">Awaiting API</span></div>
+        <div id="camera-wrap" class="camera-wrap"><img id="camera-feed" alt="Live intersection camera feed" hidden><div id="camera-empty" class="camera-empty"><span>◉</span><p>Camera stream is not available</p><small>The server must provide a browser-accessible stream URL.</small></div></div>
+      </article>
+      <article class="transfer-panel panel" aria-live="polite">
+        <p class="eyebrow">ADAPTIVE ALLOCATION</p><h2>TIME TRANSFER</h2>
+        <div class="transfer-value"><span id="transfer-from">—</span><span class="transfer-arrow">→</span><span id="transfer-to">—</span></div>
+        <p id="transfer-seconds" class="transfer-seconds">No transfer recorded</p>
+        <div class="transfer-reason"><span>Decision</span><strong id="transfer-reason">Awaiting controller data</strong></div>
+      </article>
+      <article class="safety-panel panel">
+        <p class="eyebrow">SAFETY MONITOR</p>
+        <div class="safety-row"><span class="indicator" id="emergency-indicator"></span><div><span>Emergency</span><strong id="emergency-status">Unknown</strong></div></div>
+        <div class="safety-row"><span class="indicator" id="incident-indicator"></span><div><span>Incident</span><strong id="incident-status">Unknown</strong></div></div>
+      </article>
+    </section>
+
+    <section class="signals" aria-label="Signal status">
+      <article class="signal-card signal-a"><div class="signal-title"><div><p class="eyebrow">APPROACH A</p><h2>Signal A</h2></div><span id="a-state" class="phase-badge">—</span></div><div class="signal-core"><strong id="a-count">—</strong><span>vehicles</span><span id="a-density" class="density">—</span></div><dl><div><dt>Green time</dt><dd id="a-green">—</dd></div><div><dt>Remaining</dt><dd id="a-remaining">—</dd></div><div><dt>Waiting</dt><dd id="a-waiting">—</dd></div><div><dt>Cleared in</dt><dd id="a-clearance">—</dd></div><div><dt>Unused</dt><dd id="a-unused">—</dd></div></dl></article>
+      <article class="signal-card signal-b"><div class="signal-title"><div><p class="eyebrow">APPROACH B</p><h2>Signal B</h2></div><span id="b-state" class="phase-badge">—</span></div><div class="signal-core"><strong id="b-count">—</strong><span>vehicles</span><span id="b-density" class="density">—</span></div><dl><div><dt>Green time</dt><dd id="b-green">—</dd></div><div><dt>Remaining</dt><dd id="b-remaining">—</dd></div><div><dt>Waiting</dt><dd id="b-waiting">—</dd></div><div><dt>Cleared in</dt><dd id="b-clearance">—</dd></div><div><dt>Transferred</dt><dd id="b-transferred">—</dd></div></dl></article>
+    </section>
+
+    <section class="analytics-grid">
+      <article class="panel chart-panel"><div class="panel-heading"><div><p class="eyebrow">HISTORY</p><h2>Traffic volume</h2></div><span>Vehicles / sample</span></div><canvas id="traffic-chart" role="img" aria-label="Historical Road A and Road B traffic chart"></canvas></article>
+      <article class="panel chart-panel"><div class="panel-heading"><div><p class="eyebrow">PHASE HISTORY</p><h2>Signal timing</h2></div><span>Seconds</span></div><canvas id="timing-chart" role="img" aria-label="Historical signal timing chart"></canvas></article>
+      <article class="panel event-panel"><div class="panel-heading"><div><p class="eyebrow">SYSTEM TRACE</p><h2>Event log</h2></div><span id="event-count">0 events</span></div><ol id="event-log" class="event-log"><li class="empty-event">Waiting for backend events…</li></ol></article>
+    </section>
+  </main>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

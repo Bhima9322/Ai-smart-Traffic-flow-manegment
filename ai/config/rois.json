@@ -1,0 +1,7 @@
+{
+  "frame_reference": {"width": 1280, "height": 720},
+  "roads": {
+    "A": {"x": 40, "y": 260, "width": 560, "height": 400},
+    "B": {"x": 680, "y": 260, "width": 560, "height": 400}
+  }
+}
